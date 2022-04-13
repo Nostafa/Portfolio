@@ -8,8 +8,8 @@ import projects from './data';
 import './work.scss';
 
 const Work = () => {
-  const [works, setWorks] = useState([projects]);
-  const [filterWork, setFilterWork] = useState([projects]);
+  const [works, setWorks] = useState(projects);
+  const [filterWork, setFilterWork] = useState(projects);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
@@ -43,7 +43,7 @@ const Work = () => {
         My Creative <span>Portfolio</span> Section
       </h2>
 
-      <div className="app__work-filter">
+      {/* <div className="app__work-filter">
         {['Web App', 'React JS', 'All'].map((item, index) => (
           <div
             key={index}
@@ -55,7 +55,7 @@ const Work = () => {
             {item}
           </div>
         ))}
-      </div>
+      </div> */}
 
       <motion.div
         animate={animateCard}
@@ -63,9 +63,11 @@ const Work = () => {
         className="app__work-portfolio"
       >
         {filterWork.map((work, index) => (
+          // { item.map((work,index) => (console.log(work)) )}
           <div className="app__work-item app__flex" key={index}>
             <div className="app__work-img app__flex">
-              <img src={work[index].imgUrl} alt={work.name} />
+              <img src={work.imgUrl} alt={work.name} />
+              {console.log(filterWork)}
               <motion.div
                 whileHover={{ opacity: [0, 1] }}
                 transition={{
@@ -104,7 +106,7 @@ const Work = () => {
                 {work.description}
               </p>
               <div className="app__work-tag app__flex">
-                <p className="p-text">{work[index].tags[index]}</p>
+                <p className="p-text">{work.tags[0]}</p>
               </div>
             </div>
           </div>
