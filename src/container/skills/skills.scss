@@ -29,6 +29,12 @@
     }
 }
 
+.app__hover {
+    &:hover {
+        background-color: #223240;
+    }
+}
+
 .app__skills-item {
     flex-direction: column;
     text-align: center;
