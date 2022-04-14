@@ -2,40 +2,39 @@ import React, { useState, useEffect } from 'react';
 import './about.scss';
 import { motion } from 'framer-motion';
 import { AppWrap, MotionWrap } from '../../wrapper';
-// import { images } from '../../constant';
+import { images } from '../../constant';
 import { urlFor, client } from '../../client';
 
-// const about = [
-//   {
-//     title: 'Front-End Developer',
-//     description:
-//       'I have a strong background in HTML, CSS, JavaScript, and React.js.I am currently learning Vue.js .',
-//     imgUrl: images.about01
-//   },
-//   {
-//     title: 'Back-End Developer',
-//     description:
-//       ' ',
-//     imgUrl: images.about05
-//   },
-//   {
-//     title: 'MEAN Stack Developer',
-//     description:
-//       'I am familiar with React.js ,Node.js, Express.js, and MongoDB.',
-//     imgUrl: images.about03
-//   }
-// ];
+const data = [
+  {
+    title: 'Front-End Developer',
+    description:
+      'I have a strong background in HTML, CSS, JavaScript, and React.js.I am currently learning Vue.js .',
+    imgUrl: images.about01
+  },
+  {
+    title: 'Back-End Developer',
+    description: ' ',
+    imgUrl: images.about05
+  },
+  {
+    title: 'MEAN Stack Developer',
+    description:
+      'I am familiar with React.js ,Node.js, Express.js, and MongoDB.',
+    imgUrl: images.about03
+  }
+];
 
 const About = () => {
-  const [abouts, setAbouts] = useState([]);
+  const [abouts, setAbouts] = useState(data);
 
-  useEffect(() => {
-    const query = '*[_type == "abouts"]';
+  // useEffect(() => {
+  //   const query = '*[_type == "abouts"]';
 
-    client.fetch(query).then((data) => {
-      setAbouts(data);
-    });
-  }, []);
+  //   client.fetch(query).then((data) => {
+  //     setAbouts(data);
+  //   });
+  // }, []);
 
   return (
     <>
@@ -52,7 +51,7 @@ const About = () => {
             className="app__profile-item"
             key={about.title + index}
           >
-            <img src={urlFor(about.imgUrl)} alt={about.title} />
+            <img src={about.imgUrl} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>
               {about.title}
             </h2>
